@@ -1,0 +1,7 @@
+# 本仓库 Node / Python 版本（Proto 多语言版本管理）
+# 安装：proto install | 使用：proto run node -- pnpm install / proto run python -- python main.py
+node = "20"
+python = "3.12"
+
+[settings]
+auto-install = true

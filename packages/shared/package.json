@@ -1,0 +1,21 @@
+{
+  "name": "shared",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "echo 'Add your build (e.g. tsup)'",
+    "dev": "echo 'Watch build'",
+    "lint": "echo 'Lint'",
+    "clean": "rm -rf dist"
+  },
+  "files": ["dist"]
+}
