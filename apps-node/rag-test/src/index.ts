@@ -1,5 +1,2 @@
-import dotenv from "dotenv";
-
-dotenv.config();
-
-console.log("rag-test project initialized");
+import "./process.env.js";
+import "./hello-rag.js";

@@ -10,6 +10,9 @@ importers:
       "@clack/prompts":
         specifier: ^1.1.0
         version: 1.1.0
+      "@langchain/classic":
+        specifier: ^1.0.22
+        version: 1.0.22(@langchain/core@1.1.31(openai@6.27.0(zod@4.3.6)))(openai@6.27.0(zod@4.3.6))
       "@langchain/core":
         specifier: ^1.1.31
         version: 1.1.31(openai@6.27.0(zod@4.3.6))
@@ -575,6 +578,25 @@ packages:
       }
     engines: { node: ">=18.18" }
 
+  "@langchain/classic@1.0.22":
+    resolution:
+      {
+        integrity: sha512-XJd5nbxM6UXYkDJc98Zo/9NkPFWy3g/XunBe8hnTOyaazxvA+5+gdJyDKVrcRfaGJskql0V5h/3XQ2f9WFzEuw==,
+      }
+    engines: { node: ">=20" }
+    peerDependencies:
+      "@langchain/core": ^1.0.0
+      cheerio: "*"
+      peggy: ^3.0.2
+      typeorm: "*"
+    peerDependenciesMeta:
+      cheerio:
+        optional: true
+      peggy:
+        optional: true
+      typeorm:
+        optional: true
+
   "@langchain/core@1.1.31":
     resolution:
       {
@@ -640,6 +662,15 @@ packages:
     engines: { node: ">=20" }
     peerDependencies:
       "@langchain/core": ^1.1.30
+
+  "@langchain/textsplitters@1.0.1":
+    resolution:
+      {
+        integrity: sha512-rheJlB01iVtrOUzttscutRgLybPH9qR79EyzBEbf1u97ljWyuxQfCwIWK+SjoQTM9O8M7GGLLRBSYE26Jmcoww==,
+      }
+    engines: { node: ">=20" }
+    peerDependencies:
+      "@langchain/core": ^1.0.0
 
   "@modelcontextprotocol/sdk@1.27.1":
     resolution:
@@ -1623,6 +1654,14 @@ packages:
       }
     engines: { node: ">= 0.4" }
 
+  handlebars@4.7.8:
+    resolution:
+      {
+        integrity: sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==,
+      }
+    engines: { node: ">=0.4.7" }
+    hasBin: true
+
   has-flag@4.0.0:
     resolution:
       {
@@ -1904,6 +1943,13 @@ packages:
       }
     engines: { "0": node >= 0.2.0 }
 
+  jsonpointer@5.0.1:
+    resolution:
+      {
+        integrity: sha512-p/nXbhSEcu3pZRdkW1OfJhpsVtW1gd4Wa1fnQc9YLiTfAjn0312eMKimbdIQzuZl9aa9xUGaRlP9T/CJE/ditQ==,
+      }
+    engines: { node: ">=0.10.0" }
+
   keyv@4.5.4:
     resolution:
       {
@@ -2154,6 +2200,12 @@ packages:
       }
     engines: { node: ">= 0.6" }
 
+  neo-async@2.6.2:
+    resolution:
+      {
+        integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==,
+      }
+
   npm-run-path@5.3.0:
     resolution:
       {
@@ -2216,6 +2268,12 @@ packages:
         optional: true
       zod:
         optional: true
+
+  openapi-types@12.1.3:
+    resolution:
+      {
+        integrity: sha512-N4YtSYJqghVu4iek2ZUvcN/0aqH1kRDuNqzcycDxhOUpg7GdvLa2F3DgS6yBNhInhv2r/6I0Flkn7CqL8+nIcw==,
+      }
 
   optionator@0.9.4:
     resolution:
@@ -2618,6 +2676,13 @@ packages:
       }
     engines: { node: ">=18" }
 
+  source-map@0.6.1:
+    resolution:
+      {
+        integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==,
+      }
+    engines: { node: ">=0.10.0" }
+
   split2@4.2.0:
     resolution:
       {
@@ -2833,6 +2898,14 @@ packages:
     engines: { node: ">=14.17" }
     hasBin: true
 
+  uglify-js@3.19.3:
+    resolution:
+      {
+        integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==,
+      }
+    engines: { node: ">=0.8.0" }
+    hasBin: true
+
   undici-types@7.18.2:
     resolution:
       {
@@ -2901,6 +2974,12 @@ packages:
         integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==,
       }
     engines: { node: ">=0.10.0" }
+
+  wordwrap@1.0.0:
+    resolution:
+      {
+        integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==,
+      }
 
   wrap-ansi@7.0.0:
     resolution:
@@ -3248,6 +3327,27 @@ snapshots:
 
   "@humanwhocodes/retry@0.4.3": {}
 
+  "@langchain/classic@1.0.22(@langchain/core@1.1.31(openai@6.27.0(zod@4.3.6)))(openai@6.27.0(zod@4.3.6))":
+    dependencies:
+      "@langchain/core": 1.1.31(openai@6.27.0(zod@4.3.6))
+      "@langchain/openai": 1.2.12(@langchain/core@1.1.31(openai@6.27.0(zod@4.3.6)))
+      "@langchain/textsplitters": 1.0.1(@langchain/core@1.1.31(openai@6.27.0(zod@4.3.6)))
+      handlebars: 4.7.8
+      js-yaml: 4.1.1
+      jsonpointer: 5.0.1
+      openapi-types: 12.1.3
+      uuid: 10.0.0
+      yaml: 2.8.2
+      zod: 4.3.6
+    optionalDependencies:
+      langsmith: 0.5.8(openai@6.27.0(zod@4.3.6))
+    transitivePeerDependencies:
+      - "@opentelemetry/api"
+      - "@opentelemetry/exporter-trace-otlp-proto"
+      - "@opentelemetry/sdk-trace-base"
+      - openai
+      - ws
+
   "@langchain/core@1.1.31(openai@6.27.0(zod@4.3.6))":
     dependencies:
       "@cfworker/json-schema": 4.1.1
@@ -3318,6 +3418,11 @@ snapshots:
       zod: 4.3.6
     transitivePeerDependencies:
       - ws
+
+  "@langchain/textsplitters@1.0.1(@langchain/core@1.1.31(openai@6.27.0(zod@4.3.6)))":
+    dependencies:
+      "@langchain/core": 1.1.31(openai@6.27.0(zod@4.3.6))
+      js-tiktoken: 1.0.21
 
   "@modelcontextprotocol/sdk@1.27.1(@cfworker/json-schema@4.1.1)(zod@4.3.6)":
     dependencies:
@@ -3972,6 +4077,15 @@ snapshots:
 
   gopd@1.2.0: {}
 
+  handlebars@4.7.8:
+    dependencies:
+      minimist: 1.2.8
+      neo-async: 2.6.2
+      source-map: 0.6.1
+      wordwrap: 1.0.0
+    optionalDependencies:
+      uglify-js: 3.19.3
+
   has-flag@4.0.0: {}
 
   has-symbols@1.1.0: {}
@@ -4078,6 +4192,8 @@ snapshots:
   json-stable-stringify-without-jsonify@1.0.1: {}
 
   jsonparse@1.3.1: {}
+
+  jsonpointer@5.0.1: {}
 
   keyv@4.5.4:
     dependencies:
@@ -4204,6 +4320,8 @@ snapshots:
 
   negotiator@1.0.0: {}
 
+  neo-async@2.6.2: {}
+
   npm-run-path@5.3.0:
     dependencies:
       path-key: 4.0.0
@@ -4231,6 +4349,8 @@ snapshots:
   openai@6.27.0(zod@4.3.6):
     optionalDependencies:
       zod: 4.3.6
+
+  openapi-types@12.1.3: {}
 
   optionator@0.9.4:
     dependencies:
@@ -4456,6 +4576,8 @@ snapshots:
       ansi-styles: 6.2.3
       is-fullwidth-code-point: 5.1.0
 
+  source-map@0.6.1: {}
+
   split2@4.2.0: {}
 
   statuses@2.0.2: {}
@@ -4568,6 +4690,9 @@ snapshots:
 
   typescript@5.9.3: {}
 
+  uglify-js@3.19.3:
+    optional: true
+
   undici-types@7.18.2: {}
 
   unicorn-magic@0.1.0: {}
@@ -4591,6 +4716,8 @@ snapshots:
       isexe: 2.0.0
 
   word-wrap@1.2.5: {}
+
+  wordwrap@1.0.0: {}
 
   wrap-ansi@7.0.0:
     dependencies:
