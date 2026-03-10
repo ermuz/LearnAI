@@ -1,4 +1,3 @@
-import "./process.env.js";
 import "cheerio";
 
 import { CheerioWebBaseLoader } from "@langchain/community/document_loaders/web/cheerio";
