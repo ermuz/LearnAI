@@ -1,8 +1,6 @@
-import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { Document } from "@langchain/core/documents";
 import {
   DataType,
   IndexType,
@@ -17,10 +15,13 @@ import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import chalk from "chalk";
 import { Presets, SingleBar } from "cli-progress";
 import ora from "ora";
-import pdfParse from "pdf-parse";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PDF_PATH = path.join(__dirname, "..", "vue 设计与实现.pdf");
+const PDF_PATH = path.join(
+  __dirname,
+  "..",
+  "(图灵原创) 霍春阳 - Vue.js设计与实现-人民邮电出版社 (2022).pdf",
+);
 
 const log = {
   success: (msg: string) => process.stdout.write(chalk.green(msg)),
@@ -115,6 +116,7 @@ const insertChunkBatch = async (
   });
 };
 
+// TODO: 这里换成更加智能的加载和处理方式
 const loadAndProcessPDFStreaming = async (bookId: number) => {
   const loadSpinner = ora({
     text: chalk.cyan("正在加载 PDF 文档…"),
@@ -122,46 +124,10 @@ const loadAndProcessPDFStreaming = async (bookId: number) => {
   }).start();
 
   const pdfLoader = new PDFLoader(PDF_PATH, { splitPages: true });
-  let documents = await pdfLoader.load();
-  let totalPages = documents.length;
+  const documents = await pdfLoader.load();
+  const totalPages = documents.length;
 
-  if (totalPages === 0) {
-    try {
-      loadSpinner.text = chalk.cyan("PDFLoader 未解析到页面，改用 pdf-parse…");
-      const buffer = await readFile(PDF_PATH);
-      const { numpages, text } = await pdfParse(buffer);
-      if (!text?.trim() || numpages < 1) {
-        loadSpinner.fail(
-          chalk.red("无法从 PDF 中提取文本（可能为扫描版或格式不支持）"),
-        );
-        return;
-      }
-      const perPage = Math.max(1, Math.ceil(text.length / numpages));
-      documents = Array.from(
-        { length: numpages },
-        (_, i) =>
-          new Document({
-            pageContent:
-              text.slice(i * perPage, (i + 1) * perPage).trim() || " ",
-            metadata: { loc: { pageNumber: i + 1 } },
-          }),
-      );
-      totalPages = documents.length;
-      loadSpinner.succeed(
-        chalk.green(`已通过 pdf-parse 加载 ${totalPages} 页`),
-      );
-    } catch (err) {
-      loadSpinner.fail(
-        chalk.red(
-          "pdf-parse 解析失败: " +
-            (err instanceof Error ? err.message : String(err)),
-        ),
-      );
-      return;
-    }
-  } else {
-    loadSpinner.succeed(chalk.green(`已加载 ${totalPages} 页`));
-  }
+  loadSpinner.succeed(chalk.green(`已加载 ${totalPages} 页`));
 
   const textSplitter = new RecursiveCharacterTextSplitter({
     chunkSize: CHUNK_SIZE,
