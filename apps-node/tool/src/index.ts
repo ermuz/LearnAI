@@ -3,4 +3,4 @@
 
 // import "./mini-cursor";
 // import "./langchain-mcp-test";
-import "./mcp-test";
+import "./mcp-test.js";
