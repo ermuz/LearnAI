@@ -90,7 +90,7 @@ importers:
         specifier: ^8.18.0
         version: 8.56.1(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
 
-  apps-node/memory-test:
+  apps-node/memory:
     devDependencies:
       "@types/cli-progress":
         specifier: ^3.11.6
@@ -102,7 +102,7 @@ importers:
         specifier: ^5.7.2
         version: 5.9.3
 
-  apps-node/milvus-test:
+  apps-node/milvus:
     dependencies:
       chalk:
         specifier: ^5.6.2
@@ -127,7 +127,7 @@ importers:
         specifier: ^5.7.2
         version: 5.9.3
 
-  apps-node/rag-test:
+  apps-node/output:
     devDependencies:
       tsx:
         specifier: ^4.19.2
@@ -136,7 +136,16 @@ importers:
         specifier: ^5.7.2
         version: 5.9.3
 
-  apps-node/tool-test:
+  apps-node/rag:
+    devDependencies:
+      tsx:
+        specifier: ^4.19.2
+        version: 4.21.0
+      typescript:
+        specifier: ^5.7.2
+        version: 5.9.3
+
+  apps-node/tool:
     devDependencies:
       tsx:
         specifier: ^4.19.2
