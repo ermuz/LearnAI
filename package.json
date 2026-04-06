@@ -19,7 +19,7 @@
     "lint-staged": "^15.4.3",
     "prettier": "^3.2.5",
     "turbo": "^2.3.0",
-    "typescript": "^5.7.2",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.18.0"
   },
   "lint-staged": {
@@ -31,6 +31,7 @@
   },
   "packageManager": "pnpm@9.14.2",
   "dependencies": {
+    "@ermuz/node-shared": "workspace:*",
     "@clack/prompts": "^1.1.0",
     "@langchain/classic": "^1.0.22",
     "@langchain/community": "^1.1.22",
@@ -46,6 +47,7 @@
     "js-tiktoken": "^1.0.21",
     "langchain": "^1.2.35",
     "pdf-parse": "^1",
+    "tsx": "^4.19.2",
     "zod": "^4.3.6"
   },
   "engines": {

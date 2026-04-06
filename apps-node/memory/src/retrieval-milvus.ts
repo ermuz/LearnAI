@@ -1,26 +1,12 @@
 import { MilvusClient, MetricType } from "@zilliz/milvus2-sdk-node";
-import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import { InMemoryChatMessageHistory } from "@langchain/core/chat_history";
 import { HumanMessage } from "@langchain/core/messages";
+import { createChatModel, createEmbeddings } from "@ermuz/node-shared/openai";
 const COLLECTION_NAME = "conversations";
 const VECTOR_DIM = 1024;
 
-const embeddings = new OpenAIEmbeddings({
-  apiKey: process.env.OPENAI_API_KEY,
-  model: process.env.OPENAI_EMBEDDINGS_MODEL,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-  dimensions: VECTOR_DIM,
-});
-
-const model = new ChatOpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-  model: process.env.OPENAI_MODEL,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
+const embeddings = createEmbeddings({ dimensions: VECTOR_DIM });
+const model = createChatModel();
 
 const milvusClient = new MilvusClient({
   address: "127.0.0.1:19530",

@@ -1,22 +1,8 @@
-import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import { MetricType, MilvusClient } from "@zilliz/milvus2-sdk-node";
+import { createChatModel, createEmbeddings } from "@ermuz/node-shared/openai";
 
-const embeddings = new OpenAIEmbeddings({
-  model: process.env.OPENAI_EMBEDDINGS_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  configuration: {
-    baseURL: process.env.OPEN_BASE_URL,
-  },
-});
-
-const model = new ChatOpenAI({
-  model: process.env.OPENAI_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0.7,
-  configuration: {
-    baseURL: process.env.OPEN_BASE_URL,
-  },
-});
+const embeddings = createEmbeddings();
+const model = createChatModel({ temperature: 0.7 });
 
 const COLLECTION_NAME = "ebook_collection";
 

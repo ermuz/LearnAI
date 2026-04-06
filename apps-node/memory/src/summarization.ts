@@ -9,20 +9,13 @@ import {
   MessageType,
   SystemMessage,
 } from "@langchain/core/messages";
-import { ChatOpenAI } from "@langchain/openai";
+import { createChatModel } from "@ermuz/node-shared/openai";
 
 const history = new InMemoryChatMessageHistory();
 
 const maxMessages = 6;
 
-const model = new ChatOpenAI({
-  model: process.env.OPENAI_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0,
-  configuration: {
-    baseURL: process.env.OPEN_BASE_URL,
-  },
-});
+const model = createChatModel();
 
 const messages = [
   { type: "human", content: "我叫张三" },

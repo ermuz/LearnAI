@@ -1,9 +1,5 @@
-import { config } from "dotenv";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import { readFile } from "node:fs/promises";
 
-import { ChatOpenAI } from "@langchain/openai";
 import { tool } from "@langchain/core/tools";
 import z from "zod";
 import {
@@ -12,21 +8,13 @@ import {
   SystemMessage,
   ToolMessage,
 } from "@langchain/core/messages";
+import { createChatModel, loadAppEnv } from "@ermuz/node-shared";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const root = join(__dirname, "..");
+loadAppEnv(import.meta.url, { includeLocal: true });
 
-config({ path: join(root, ".env") });
-config({ path: join(root, ".env.local"), override: true });
-
-const model = new ChatOpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+const model = createChatModel({
   model: "qwen-coder-turbo",
-  temperature: 0,
-
-  configuration: {
-    baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
-  },
+  baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
 });
 
 const fileReadTool = tool(

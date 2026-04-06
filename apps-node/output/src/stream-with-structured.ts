@@ -1,14 +1,7 @@
-import { ChatOpenAI } from "@langchain/openai";
 import z from "zod";
+import { createChatModel } from "@ermuz/node-shared/openai";
 
-const model = new ChatOpenAI({
-  modelName: "qwen3-vl-plus",
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
+const model = createChatModel({ model: "qwen3-vl-plus" });
 
 // 使用 zod 定义结构化输出格式
 const schema = z.object({

@@ -1,19 +1,12 @@
-import { ChatOpenAI } from "@langchain/openai";
 import { InMemoryChatMessageHistory } from "@langchain/core/chat_history";
 import {
   HumanMessage,
   MessageType,
   SystemMessage,
 } from "@langchain/core/messages";
+import { createChatModel } from "@ermuz/node-shared/openai";
 
-const model = new ChatOpenAI({
-  model: process.env.OPENAI_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0.7,
-  configuration: {
-    baseURL: process.env.OPEN_BASE_URL,
-  },
-});
+const model = createChatModel({ temperature: 0.7 });
 
 const RoleMap: Record<MessageType, string> = {
   ai: "助手",

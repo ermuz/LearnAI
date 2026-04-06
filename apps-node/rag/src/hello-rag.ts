@@ -1,26 +1,11 @@
-import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
-
 import { MemoryVectorStore } from "@langchain/classic/vectorstores/memory";
 
 import { Document } from "@langchain/core/documents";
 import { spinner } from "@clack/prompts";
+import { createChatModel, createEmbeddings } from "@ermuz/node-shared/openai";
 
-const model = new ChatOpenAI({
-  model: process.env.OPENAI_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
-
-const embeddings = new OpenAIEmbeddings({
-  model: process.env.OPENAI_EMBEDDINGS_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
+const model = createChatModel();
+const embeddings = createEmbeddings();
 
 // 这个是拆分后的文档
 const documents = [

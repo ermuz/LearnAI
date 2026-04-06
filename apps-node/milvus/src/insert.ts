@@ -4,21 +4,13 @@ import {
   MetricType,
   IndexType,
 } from "@zilliz/milvus2-sdk-node";
-
-import { OpenAIEmbeddings } from "@langchain/openai";
+import { createEmbeddings } from "@ermuz/node-shared/openai";
 
 const COLLECTION_NAME = "ai_diary";
 const VECTOR_DIM = 1024;
 
 // 声明 向量嵌入模型
-const embeddings = new OpenAIEmbeddings({
-  model: process.env.OPENAI_EMBEDDINGS_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-  dimensions: VECTOR_DIM,
-});
+const embeddings = createEmbeddings({ dimensions: VECTOR_DIM });
 
 const client = new MilvusClient({
   address: "127.0.0.1:19530",

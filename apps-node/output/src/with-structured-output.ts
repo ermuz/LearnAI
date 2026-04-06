@@ -1,16 +1,8 @@
-import { ChatOpenAI } from "@langchain/openai";
 import { z } from "zod";
+import { createChatModel } from "@ermuz/node-shared/openai";
 
 // 初始化模型
-const model = new ChatOpenAI({
-  // withStructuredOutput 需要使用特定模型
-  model: "qwen3-vl-plus",
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
+const model = createChatModel({ model: "qwen3-vl-plus" });
 
 const scientistSchema = z.object({
   name: z.string().describe("科学家的全名"),

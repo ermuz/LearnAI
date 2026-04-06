@@ -4,18 +4,11 @@ import {
   MetricType,
   IndexType,
 } from "@zilliz/milvus2-sdk-node";
-import { OpenAIEmbeddings } from "@langchain/openai";
+import { createEmbeddings } from "@ermuz/node-shared/openai";
 const COLLECTION_NAME = "conversations";
 const VECTOR_DIM = 1024;
 
-const embeddings = new OpenAIEmbeddings({
-  apiKey: process.env.OPENAI_API_KEY,
-  model: process.env.OPENAI_EMBEDDINGS_MODEL,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-  dimensions: VECTOR_DIM,
-});
+const embeddings = createEmbeddings({ dimensions: VECTOR_DIM });
 
 const milvusClient = new MilvusClient({
   address: "127.0.0.1:19530",

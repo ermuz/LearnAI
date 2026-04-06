@@ -1,9 +1,5 @@
-import { config } from "dotenv";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import { MultiServerMCPClient } from "@langchain/mcp-adapters";
 
-import { ChatOpenAI } from "@langchain/openai";
 import {
   BaseMessage,
   HumanMessage,
@@ -11,19 +7,13 @@ import {
 } from "@langchain/core/messages";
 import { writeFileTool } from "./tools.js";
 import { spinner } from "@clack/prompts";
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const root = join(__dirname, "..");
+import { createChatModel, loadAppEnv } from "@ermuz/node-shared";
 
-config({ path: join(root, ".env") });
-config({ path: join(root, ".env.local"), override: true });
+loadAppEnv(import.meta.url, { includeLocal: true });
 
-const model = new ChatOpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+const model = createChatModel({
   model: "qwen3.5-plus",
-  temperature: 0,
-  configuration: {
-    baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
-  },
+  baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
 });
 
 const mcpClient = new MultiServerMCPClient({

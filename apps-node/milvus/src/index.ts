@@ -1,5 +1,12 @@
-import "./process.env.js";
-// import "./insert.js";
-// import "./ebook-writer.js";
-// import "./ebook-query.js";
-import "./ebook-reader-rag.js";
+import { loadAppEnv } from "@ermuz/node-shared/env";
+
+loadAppEnv(import.meta.url, { includeLocal: false });
+
+const main = async () => {
+  // await import("./insert.js");
+  // await import("./ebook-writer.js");
+  // await import("./ebook-query.js");
+  await import("./ebook-reader-rag.js");
+};
+
+await main();

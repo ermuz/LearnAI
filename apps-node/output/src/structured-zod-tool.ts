@@ -1,20 +1,13 @@
 import { InMemoryChatMessageHistory } from "@langchain/core/chat_history";
 import { HumanMessage, ToolMessage } from "@langchain/core/messages";
 import { tool } from "@langchain/core/tools";
-import { ChatOpenAI } from "@langchain/openai";
 import { z } from "zod";
+import { createChatModel } from "@ermuz/node-shared/openai";
 
 const history = new InMemoryChatMessageHistory();
 
 // 初始化模型
-const model = new ChatOpenAI({
-  model: process.env.OPENAI_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
+const model = createChatModel();
 
 // 定义结构化输出的 schema
 const scientistSchema = z.object({

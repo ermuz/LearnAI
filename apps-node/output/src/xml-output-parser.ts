@@ -1,15 +1,8 @@
-import { ChatOpenAI } from "@langchain/openai";
 import { XMLOutputParser } from "@langchain/core/output_parsers";
+import { createChatModel } from "@ermuz/node-shared/openai";
 
 // 初始化模型
-const model = new ChatOpenAI({
-  modelName: process.env.OPENAI_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
+const model = createChatModel();
 
 const parser = new XMLOutputParser();
 

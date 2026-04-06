@@ -1,21 +1,41 @@
 {
-  "name": "shared",
+  "name": "@ermuz/node-shared",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.js"
+    },
+    "./env": {
+      "types": "./dist/env.d.ts",
+      "import": "./dist/env.js",
+      "require": "./dist/env.js"
+    },
+    "./openai": {
+      "types": "./dist/openai.d.ts",
+      "import": "./dist/openai.js",
+      "require": "./dist/openai.js"
     }
   },
   "scripts": {
-    "build": "echo 'Add your build (e.g. tsup)'",
-    "dev": "echo 'Watch build'",
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json -w",
     "lint": "echo 'Lint'",
     "clean": "rm -rf dist"
   },
-  "files": ["dist"]
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@langchain/openai": "^1.2.12",
+    "dotenv": "^16.6.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
 }

@@ -1,15 +1,8 @@
-import { ChatOpenAI } from "@langchain/openai";
 import { JsonOutputToolsParser } from "@langchain/core/output_parsers/openai_tools";
 import { z } from "zod";
+import { createChatModel } from "@ermuz/node-shared/openai";
 
-const model = new ChatOpenAI({
-  modelName: process.env.OPENAI_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
+const model = createChatModel();
 
 // 定义结构化输出的 schema
 const scientistSchema = z.object({

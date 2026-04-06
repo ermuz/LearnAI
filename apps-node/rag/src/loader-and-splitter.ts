@@ -3,25 +3,11 @@ import "cheerio";
 import { CheerioWebBaseLoader } from "@langchain/community/document_loaders/web/cheerio";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { MemoryVectorStore } from "@langchain/classic/vectorstores/memory";
-import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import { spinner } from "@clack/prompts";
+import { createChatModel, createEmbeddings } from "@ermuz/node-shared/openai";
 
-const model = new ChatOpenAI({
-  model: process.env.OPENAI_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
-
-const embeddings = new OpenAIEmbeddings({
-  model: process.env.OPENAI_EMBEDDINGS_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
+const model = createChatModel();
+const embeddings = createEmbeddings();
 
 const cheerioLoader = new CheerioWebBaseLoader(
   // 加载整个网页

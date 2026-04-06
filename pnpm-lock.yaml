@@ -10,6 +10,9 @@ importers:
       "@clack/prompts":
         specifier: ^1.1.0
         version: 1.1.0
+      "@ermuz/node-shared":
+        specifier: workspace:*
+        version: link:packages/shared
       "@langchain/classic":
         specifier: ^1.0.22
         version: 1.0.22(@langchain/core@1.1.31(@opentelemetry/api@1.9.0)(openai@6.27.0(ws@8.19.0)(zod@4.3.6)))(@opentelemetry/api@1.9.0)(cheerio@1.2.0)(openai@6.27.0(ws@8.19.0)(zod@4.3.6))(ws@8.19.0)
@@ -52,6 +55,9 @@ importers:
       pdf-parse:
         specifier: ^1
         version: 1.1.4
+      tsx:
+        specifier: ^4.19.2
+        version: 4.21.0
       zod:
         specifier: ^4.3.6
         version: 4.3.6
@@ -84,7 +90,7 @@ importers:
         specifier: ^2.3.0
         version: 2.8.14
       typescript:
-        specifier: ^5.7.2
+        specifier: ^5.9.3
         version: 5.9.3
       typescript-eslint:
         specifier: ^8.18.0
@@ -136,7 +142,25 @@ importers:
         specifier: ^5.7.2
         version: 5.9.3
 
+  apps-node/prompt-template:
+    devDependencies:
+      tsx:
+        specifier: ^4.19.2
+        version: 4.21.0
+      typescript:
+        specifier: ^5.7.2
+        version: 5.9.3
+
   apps-node/rag:
+    devDependencies:
+      tsx:
+        specifier: ^4.19.2
+        version: 4.21.0
+      typescript:
+        specifier: ^5.7.2
+        version: 5.9.3
+
+  apps-node/runnable:
     devDependencies:
       tsx:
         specifier: ^4.19.2
@@ -154,7 +178,18 @@ importers:
         specifier: ^5.7.2
         version: 5.9.3
 
-  packages/shared: {}
+  packages/shared:
+    dependencies:
+      "@langchain/openai":
+        specifier: ^1.2.12
+        version: 1.2.12(@langchain/core@1.1.31(@opentelemetry/api@1.9.0)(openai@6.27.0(ws@8.19.0)(zod@4.3.6)))(ws@8.19.0)
+      dotenv:
+        specifier: ^16.6.1
+        version: 16.6.1
+    devDependencies:
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
 packages:
   "@anthropic-ai/sdk@0.27.3":
@@ -5965,7 +6000,7 @@ snapshots:
       isstream: 0.1.2
       jsonwebtoken: 9.0.3
       mime-types: 2.1.35
-      retry-axios: 2.6.0(axios@1.13.6)
+      retry-axios: 2.6.0(axios@1.13.6(debug@4.4.3))
       tough-cookie: 4.1.4
     transitivePeerDependencies:
       - supports-color
@@ -6538,7 +6573,7 @@ snapshots:
       onetime: 7.0.0
       signal-exit: 4.1.0
 
-  retry-axios@2.6.0(axios@1.13.6):
+  retry-axios@2.6.0(axios@1.13.6(debug@4.4.3)):
     dependencies:
       axios: 1.13.6(debug@4.4.3)
 

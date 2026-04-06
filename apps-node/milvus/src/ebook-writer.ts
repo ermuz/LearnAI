@@ -9,8 +9,8 @@ import {
 } from "@zilliz/milvus2-sdk-node";
 
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
-import { OpenAIEmbeddings } from "@langchain/openai";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
+import { createEmbeddings } from "@ermuz/node-shared/openai";
 
 import chalk from "chalk";
 import { Presets, SingleBar } from "cli-progress";
@@ -38,14 +38,7 @@ const client = new MilvusClient({
 });
 
 // 声明 向量嵌入模型
-const embeddings = new OpenAIEmbeddings({
-  model: process.env.OPENAI_EMBEDDINGS_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-  dimensions: VECTOR_DIM,
-});
+const embeddings = createEmbeddings({ dimensions: VECTOR_DIM });
 
 const getEmbeddings = (text: string) => embeddings.embedQuery(text);
 

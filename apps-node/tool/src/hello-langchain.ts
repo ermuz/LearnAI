@@ -1,21 +1,10 @@
-import { config } from "dotenv";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { loadAppEnv, createChatModel } from "@ermuz/node-shared";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const root = join(__dirname, "..");
+loadAppEnv(import.meta.url, { includeLocal: true });
 
-config({ path: join(root, ".env") });
-config({ path: join(root, ".env.local"), override: true });
-
-import { ChatOpenAI } from "@langchain/openai";
-
-const model = new ChatOpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+const model = createChatModel({
   model: "qwen-coder-turbo",
-  configuration: {
-    baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
-  },
+  baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
 });
 
 const response = await model.invoke("Hello, how are you?");

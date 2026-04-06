@@ -1,17 +1,10 @@
 /* eslint-disable no-irregular-whitespace */
-import { ChatOpenAI } from "@langchain/openai";
 import { StructuredOutputParser } from "@langchain/core/output_parsers";
 import { z } from "zod";
+import { createChatModel } from "@ermuz/node-shared/openai";
 
 // 初始化模型
-const model = new ChatOpenAI({
-  model: process.env.OPENAI_MODEL,
-  apiKey: process.env.OPENAI_API_KEY,
-  temperature: 0,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-});
+const model = createChatModel();
 
 const scientistSchema = z.object({
   name: z.string().describe("科学家的姓名"),
