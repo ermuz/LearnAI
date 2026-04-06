@@ -30,5 +30,6 @@ export const loadAppEnv = (
     path: paths,
     override,
     debug,
+    encoding: "utf-8",
   });
 };

@@ -5,6 +5,19 @@ import eslintConfigPrettier from "eslint-config-prettier";
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  {
+    files: ["**/*.{js,mjs,cjs,jsx}"],
+    rules: {
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+    },
+  },
+  {
+    files: ["**/*.{ts,mts,cts,tsx}"],
+    rules: {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+    },
+  },
   eslintConfigPrettier,
   {
     ignores: [
