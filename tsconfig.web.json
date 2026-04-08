@@ -1,0 +1,3 @@
+{
+  "extends": "@ermuz/tsconfig/web.json"
+}

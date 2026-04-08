@@ -1,3 +1,4 @@
 packages:
   - "packages/*"
   - "apps-node/*"
+  - "web-app/*"

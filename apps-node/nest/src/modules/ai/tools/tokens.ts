@@ -1,0 +1,9 @@
+export const SEND_MAIL_TOOL = 'SEND_MAIL_TOOL';
+export const WEB_SEARCH_TOOL = 'WEB_SEARCH_TOOL';
+export const CREATE_USER_TOOL = 'CREATE_USER_TOOL';
+export const LIST_USERS_TOOL = 'LIST_USERS_TOOL';
+export const GET_USER_TOOL = 'GET_USER_TOOL';
+export const UPDATE_USER_TOOL = 'UPDATE_USER_TOOL';
+export const DELETE_USER_TOOL = 'DELETE_USER_TOOL';
+export const CRON_JOB_TOOL = 'CRON_JOB_TOOL';
+export const TIME_NOW_TOOL = 'TIME_NOW_TOOL';

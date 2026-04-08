@@ -1,0 +1,10 @@
+export const SEND_MAIL_TOOL_NAME = 'sendMail';
+export const WEB_SEARCH_TOOL_NAME = 'webSearch';
+export const WEB_SEARCH_TOOL_LEGACY_NAME = 'tavily_search';
+export const DB_CREATE_USER_TOOL_NAME = 'dbCreateUser';
+export const DB_LIST_USERS_TOOL_NAME = 'dbListUsers';
+export const DB_GET_USER_TOOL_NAME = 'dbGetUser';
+export const DB_UPDATE_USER_TOOL_NAME = 'dbUpdateUser';
+export const DB_DELETE_USER_TOOL_NAME = 'dbDeleteUser';
+export const CRON_JOB_TOOL_NAME = 'cronJob';
+export const TIME_NOW_TOOL_NAME = 'timeNow';
