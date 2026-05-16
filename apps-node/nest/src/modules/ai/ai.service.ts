@@ -145,7 +145,7 @@ export class AiService {
           new ToolMessage({
             content: toolResult,
             name: toolCall.name,
-            tool_call_id: toolCall.id!,
+            tool_call_id: toolCall.id,
           }),
         );
       }
@@ -214,7 +214,7 @@ export class AiService {
         messages.push(
           new ToolMessage({
             content: toolResult,
-            tool_call_id: toolCall.id!,
+            tool_call_id: toolCall.id,
             name: toolCall.name,
           }),
         );
